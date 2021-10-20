@@ -11,6 +11,9 @@ public class ChangeLevel : MonoBehaviour
     public void ChangeScene()
     {
         SceneManager.LoadScene(destination);
+        PlayerMovement player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        player.startPosition = GameObject.Find("Start Here").transform.position;
+        player.ResetPlayer();
     }
 
     void OnTriggerEnter(Collider other)
