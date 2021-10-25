@@ -9,14 +9,22 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(player == null)
+        {
+            player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        }
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called once per frame
     void Update()
     {
         // call movement every frame and send it axis data.
-        player.MoveHorizontal(Input.GetAxis("Horizontal"));
-        player.MoveVertical(Input.GetAxis("Vertical"));
+        player.dir.x = Input.GetAxis("Horizontal");
+        player.dir.z = Input.GetAxis("Vertical");
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            player.Jump();
+        }
     }
 }
