@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Tooltip("Speed multipier for Horizontal and Vertical movement")]
+    [Range(5f,50f)]
     public float speed = 10, jumpForce = 5;
 
     public Vector3 dir;
+    public Vector3 startPosition;
 
     public bool isGrounded = true;
 
     int coins = 0;
-
-    public Vector3 startPosition;
 
     // get a reference to a rigidbody.
     Rigidbody rb;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(dir * speed);
 
-        if(this.transform.position.y < -5)
+        if(this.transform.position.y < -20)
         {
             ResetPlayer();
         }
