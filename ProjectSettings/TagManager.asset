@@ -8,6 +8,8 @@ TagManager:
   - coin
   - Coin
   - PowerUp
+  - JumpPowerUp
+  - AltCam
   layers:
   - Default
   - TransparentFX

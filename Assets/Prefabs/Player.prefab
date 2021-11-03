@@ -128,11 +128,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d3620e2d6117b459de0455cf8a4929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   speed: 10
   jumpForce: 5
+  dashForce: 15
+  coinValue: 1
   dir: {x: 0, y: 0, z: 0}
   startPosition: {x: 0, y: 0, z: 0}
   isGrounded: 1
+  canJump: 0
 --- !u!135 &5414970997420915104
 SphereCollider:
   m_ObjectHideFlags: 0

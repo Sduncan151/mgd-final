@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Camera mainCam;
+    
     [Tooltip("Speed multipier for Horizontal and Vertical movement")]
     [Range(5f,50f)]
-    public float speed = 10, jumpForce = 5;
+    public float speed = 10, jumpForce = 5, dashForce = 5;
 
     public int coinValue = 1;
 
@@ -15,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded = true;
     public bool canJump = false;
+    bool canDash = true;
 
     private Rigidbody rb;
     private int coins = 0;
@@ -30,10 +33,11 @@ public class PlayerMovement : MonoBehaviour
         startPosition = GameObject.Find("Start Here").transform.position;
         if(PlayerPrefs.GetInt("canJump") == 1)
         {
-            Debug.Log("We can jump")
+            Debug.Log("We can jump");
             canJump = true;
         }
         ResetPlayer();
+        if(mainCam == null) mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     void FixedUpdate()
@@ -64,6 +68,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Dash()
+    {
+        if(canDash)
+        {
+        rb.velocity = Vector3.zero;
+        rb.AddForce(dir * dashForce, ForceMode.Impulse);
+        StartCoroutine(Wait());
+        }
+    }
+
+    IEnumerator Wait(float waitTime = 1f)
+    {
+        canDash = false;
+        yield return new WaitForSeconds(waitTime);
+        canDash = true;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Floor"))
@@ -84,6 +105,11 @@ public class PlayerMovement : MonoBehaviour
             PlayerPrefs.SetInt("canJump", 1);   // 1 is true, 0 is false.
             Destroy(other.gameObject);
         }
+        else if(other.gameObject.CompareTag("AltCam"))
+        {
+            mainCam.gameObject.SetActive(false);
+            other.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -91,6 +117,11 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Floor"))
         {
             isGrounded = false;
+        }
+        else if(other.gameObject.CompareTag("AltCam"))
+        {
+            mainCam.gameObject.SetActive(true);
+            other.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

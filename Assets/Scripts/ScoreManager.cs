@@ -19,6 +19,7 @@ public class ScoreManager : MonoBehaviour
         if(PlayerPrefs.HasKey("Coin"))
         {
             score = PlayerPrefs.GetInt("Coin");
+            ChangeScore(0);
         }
     }
 
@@ -26,5 +27,6 @@ public class ScoreManager : MonoBehaviour
     {
         score += coinValue;
         text.text = "Coins: " + score.ToString();
+        PlayerPrefs.SetInt("Coin", score);
     }
 }
