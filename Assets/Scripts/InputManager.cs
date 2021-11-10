@@ -11,6 +11,13 @@ public class InputManager : MonoBehaviour
     public GameObject pauseMenu;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        if(pauseMenu == null) 
+        {
+            pauseMenu = GameObject.FindWithTag("PauseMenu");
+        }
+    }
     void Start()
     {
         if(player == null)
@@ -18,7 +25,7 @@ public class InputManager : MonoBehaviour
             player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         }
 
-        if(pauseMenu == null) pauseMenu = GameObject.Find("PauseMenu");
+        if(pauseMenu == null) pauseMenu = GameObject.FindWithTag("PauseMenu");
         pauseMenu.SetActive(paused);
     }
 
@@ -46,14 +53,14 @@ public class InputManager : MonoBehaviour
             Pause();
         }
 
-        if(Input.GetKey(KeyCode.LeftControl))
-        {
-            if(Input.GetKeyDown(KeyCode.Q))
-            {
-                Application.Quit();
-                UnityEditor.EditorApplication.isPlaying = false;
-            }
-        }
+        // if(Input.GetKey(KeyCode.LeftControl))
+        // {
+        //     if(Input.GetKeyDown(KeyCode.Q))
+        //     {
+        //         Application.Quit();
+        //         UnityEditor.EditorApplication.isPlaying = false;
+        //     }
+        // }
         
         // call movement every frame and send it axis data.
         player.dir.x = Input.GetAxis("Horizontal");

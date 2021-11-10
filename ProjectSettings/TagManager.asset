@@ -10,6 +10,7 @@ TagManager:
   - PowerUp
   - JumpPowerUp
   - AltCam
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

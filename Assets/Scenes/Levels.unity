@@ -1530,7 +1530,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMangeger
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2424944843102937264, guid: 4028356f6ce8da946adf64baf3431166, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4028356f6ce8da946adf64baf3431166, type: 3}
 --- !u!1 &1165490361 stripped
 GameObject:
@@ -2309,7 +2310,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679525438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 065a0c243de8f4148b5a4e3e1accafba, type: 3}
+  m_Script: {fileID: 11500000, guid: aefa99c13136bc346a6d15ee0df230e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1757124329
