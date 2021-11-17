@@ -15,7 +15,7 @@ public class FindPlayerForConstraint : MonoBehaviour
     {
         // make a reference to the position constraint
         PositionConstraint pc = this.GetComponent<PositionConstraint>();
-        RotationConstraint rc = this.GetComponent<RotationConstraint>();
+        // RotationConstraint rc = this.GetComponent<RotationConstraint>();
         // find player
          if(player == null)
         {
@@ -26,7 +26,7 @@ public class FindPlayerForConstraint : MonoBehaviour
         pc.AddSource(source);
         pc.constraintActive = true;
 
-        rc.AddSource(source);
-        rc.constraintActive = true;
+        // rc.AddSource(source);
+        // rc.constraintActive = true;
     }
 }
