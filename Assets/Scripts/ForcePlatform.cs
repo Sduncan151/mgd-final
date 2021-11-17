@@ -20,6 +20,7 @@ public class ForcePlatform : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
+            rb.gameObject.transform.position = this.transform.position;
             if(zeroOutVelocity) rb.velocity = Vector3.zero;
             rb.AddForce(this.transform.up * force, ForceMode.Impulse);
             if(singleUse) Destroy(this.gameObject);
