@@ -8,6 +8,13 @@ public class ForcePlatform : MonoBehaviour
     public bool zeroOutVelocity = true;
     public bool singleUse = false;
 
+    [Header("Audio")]
+    
+    public AudioSource aud;
+    public AudioClip woooshClip;
+    [Range(0f,1f)]
+    public float woooshVolume = .5f;
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
@@ -24,6 +31,7 @@ public class ForcePlatform : MonoBehaviour
             if(zeroOutVelocity) rb.velocity = Vector3.zero;
             rb.AddForce(this.transform.up * force, ForceMode.Impulse);
             if(singleUse) Destroy(this.gameObject);
+            aud.PlayOneShot(woooshClip, woooshVolume);
         }
     }
 }

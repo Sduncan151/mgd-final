@@ -11,6 +11,7 @@ TagManager:
   - JumpPowerUp
   - AltCam
   - PauseMenu
+  - bgm
   layers:
   - Default
   - TransparentFX

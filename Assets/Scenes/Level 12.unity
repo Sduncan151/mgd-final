@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14892684, g: 0.024482314, b: 0.002283177, a: 1}
+  m_IndirectSpecularColor: {r: 0.14892678, g: 0.024482287, b: 0.0022831773, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8a0dbbc8e1b97c6448ba3817be0a96ed, type: 2}
   m_LightingSettings: {fileID: 1985715750}
 --- !u!196 &4
 NavMeshSettings:
@@ -5692,6 +5692,9 @@ MonoBehaviour:
   force: 20
   zeroOutVelocity: 1
   singleUse: 0
+  aud: {fileID: 0}
+  woooshClip: {fileID: 0}
+  woooshVolume: 0.5
 --- !u!64 &1403049150
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24224,6 +24227,9 @@ MonoBehaviour:
   force: 20
   zeroOutVelocity: 1
   singleUse: 0
+  aud: {fileID: 0}
+  woooshClip: {fileID: 0}
+  woooshVolume: 0.5
 --- !u!64 &1986992749
 MeshCollider:
   m_ObjectHideFlags: 0

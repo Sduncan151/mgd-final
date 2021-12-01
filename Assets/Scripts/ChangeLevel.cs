@@ -8,8 +8,6 @@ public class ChangeLevel : MonoBehaviour
     [Tooltip("The name of the level you want to go to.")]
     public string destination = "Level 2";
 
-    
-
     public void ChangeScene()
     {
         PlayerPrefs.SetInt("Progress", SceneManager.GetActiveScene().buildIndex + 1);

@@ -19,6 +19,13 @@ public class PlayerMovement : MonoBehaviour
     public bool canJump = false;
     bool canDash = true;
 
+    [Header("Audio")]
+    
+    public AudioSource aud;
+    public AudioClip coinClip, powerUpClip, jumpClip;
+    [Range(0f,1f)]
+    public float coinVolume, powerUpVolume, jumpVolume = .5f;
+
     private Rigidbody rb;
     private int coins = 0;
 
@@ -65,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded && canJump) 
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            aud.PlayOneShot(jumpClip, jumpVolume);
         }
     }
 
@@ -97,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             coins++;
             ScoreManager.instance.ChangeScore(coinValue);
+            aud.PlayOneShot(coinClip, coinVolume);
         }
 
         else if(other.gameObject.CompareTag("JumpPowerUp"))
@@ -104,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
             canJump = true;
             PlayerPrefs.SetInt("canJump", 1);   // 1 is true, 0 is false.
             Destroy(other.gameObject);
+            aud.PlayOneShot(powerUpClip, powerUpVolume);
         }
         else if(other.gameObject.CompareTag("AltCam"))
         {
